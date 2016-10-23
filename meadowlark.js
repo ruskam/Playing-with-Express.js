@@ -3,9 +3,12 @@ Rustam Kamberov
 */
 
 // import Express as a module
+// requre is a Node function for importing a module
 var express = require('express');
+var fortune = require('./lib/fortune.js');
 
 var app = express();
+
 
 // set up handlebars veiw engine
 var handlebars = require('express-handlebars')
@@ -35,11 +38,17 @@ app.get('/', function(req, res) {
 
 // Add a route for About apge
 app.get('/about', function(req, res) {
+
+    /*
     var randomFortune =
         fortuneCookies[Math.floor(Math.random() * fortuneCookies.length)]
+
     res.render('about', {
         fortuneCookies: randomFortune
     });
+    */
+
+    res.render('about', { fortune: fortune.getFortune() } );
 })
 
 // custom 404 page
