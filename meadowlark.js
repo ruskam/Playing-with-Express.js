@@ -9,7 +9,6 @@ var fortune = require('./lib/fortune.js');
 
 var app = express();
 
-
 // set up handlebars veiw engine
 var handlebars = require('express-handlebars')
     .create({
@@ -22,7 +21,7 @@ app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 3000);
 
 app.use(express.static(__dirname + '/public'))
-
+/*
 var fortuneCookies = [
     "Conquer your fears or they will conquer you.",
     "Rivers need springs.",
@@ -30,6 +29,7 @@ var fortuneCookies = [
     "You will have a pleasant surprise.",
     "Whenever possible, keep it simple.",
 ];
+*/
 
 // Add route for an index page
 app.get('/', function(req, res) {
@@ -48,8 +48,12 @@ app.get('/about', function(req, res) {
     });
     */
 
-    res.render('about', { fortune: fortune.getFortune() } );
-})
+    res.render('about', 
+        { 
+            fortune: fortune.getFortune()
+        }
+    );
+});
 
 // custom 404 page
 app.use(function(req, res) {
